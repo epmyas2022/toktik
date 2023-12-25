@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:toctik/domain/entities/video_post.dart';
-import 'package:toctik/infrastructure/models/local_video_model.dart';
-import 'package:toctik/shared/data/local_video_data.dart';
+import 'package:toctik/domain/repositories/video_post_repository.dart';
 
 class DiscoverProvider extends ChangeNotifier {
-  //TODO: repository, dataSource
+  final VideoPostRepository videoPostRepository;
+
+  DiscoverProvider({required this.videoPostRepository});
   bool isFetching = true;
   List<VideoPost> videos = [];
   Future<void> fetchVideosNext() async {
-    //await Future.delayed(const Duration(seconds: 2));
-    List<VideoPost> newVideos = videoPost
-        .map((video) => LocalVideoModel.fromJson(video).toEntity())
-        .toList();
-
+    List<VideoPost> newVideos = await videoPostRepository.getVideoPostList(1);
     videos.addAll(newVideos);
     isFetching = false;
     notifyListeners();
