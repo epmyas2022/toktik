@@ -45,7 +45,7 @@ La aplicación se puede ejecutar en un dispositivo conectado o en un emulador. P
 
 ## Screenshots
 
-<div style="display:flex; gap: 10px;">
+<div style="display:flex; gap: 11px;">
 
 <img src="screenshots/screenshot1.png" width= "300" /> 
 
